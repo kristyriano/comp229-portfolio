@@ -27,9 +27,7 @@ function Home() {
           )}
 
           <div className="hero-content">
-            <h1 className="hero-title">
-              Everything you dream of <span className="highlight">is possible.</span>
-            </h1>
+            <h1 className="hero-title">Everything you dream of is possible.</h1>
 
             <p className="hero-text">
               Welcome to Kristy Riano. Websites, apps, digital marketing and AI solutions
@@ -63,27 +61,27 @@ function Home() {
       {/* Services overview: the same data used by the Services page */}
       <section className="home-services">
         <div className="home-services-inner">
-        <h2 className="home-services-title">
-          Everything your business needs to <span className="highlight">grow online.</span>
-        </h2>
+          <h2 className="home-services-title">
+            Everything your business needs to grow online.
+          </h2>
 
-        <ul className="home-service-list">
-          {services.map((service) => (
-            <li key={service.id}>
-              <h3>{service.name}</h3>
-              <p>{service.description}</p>
-            </li>
-          ))}
-        </ul>
+          <ul className="home-service-list">
+            {services.map((service) => (
+              <li key={service.id}>
+                <h3>{service.name}</h3>
+                <p>{service.description}</p>
+              </li>
+            ))}
+          </ul>
 
-        <div className="button-row">
-          <Link to="/services" className="button button-primary">
-            Explore my services
-          </Link>
-          <Link to="/projects" className="button button-dark">
-            See my work
-          </Link>
-        </div>
+          <div className="button-row">
+            <Link to="/services" className="button button-primary">
+              Explore my services
+            </Link>
+            <Link to="/projects" className="button button-dark">
+              See my work
+            </Link>
+          </div>
         </div>
       </section>
     </>
