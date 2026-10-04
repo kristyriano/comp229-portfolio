@@ -1,111 +1,480 @@
+/* ==========================================================
+   Global styles for the whole portfolio.
+   Sections: 1. Tokens  2. Base  3. Layout  4. Navbar
+   5. Buttons  6. Home  7. Pages  8. Footer  9. Small screens
+   ========================================================== */
+
+/* ---------- 1. Design tokens (colors, fonts, sizes) ---------- */
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  --color-indigo: #1f2a5c;
+  --color-indigo-soft: #46528a;
+  --color-marigold: #f2b705;
+  --color-paper: #f7f8fc;
+  --color-surface: #ffffff;
+  --color-line: #d9deee;
+  --color-text: #232842;
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+  --font-heading: 'Bricolage Grotesque', 'Trebuchet MS', sans-serif;
+  --font-body: 'Figtree', 'Segoe UI', Arial, sans-serif;
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
+  --content-width: 68rem;
+  --radius: 0.5rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
+/* ---------- 2. Base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 body {
   margin: 0;
-}
-
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
+  background: var(--color-paper);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
 }
 
 h1,
 h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
+  font-family: var(--font-heading);
+  color: var(--color-indigo);
+  line-height: 1.15;
+  margin: 0;
 }
 
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
 p {
   margin: 0;
 }
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
+a {
+  color: var(--color-indigo);
 }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* Visible outline for people who navigate with the keyboard */
+:focus-visible {
+  outline: 3px solid var(--color-marigold);
+  outline-offset: 3px;
+}
+
+/* ---------- 3. Layout ---------- */
+.site {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.site-main {
+  flex: 1;
+  width: 100%;
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 3rem 1.5rem 4rem;
+}
+
+/* ---------- 4. Navbar ---------- */
+.navbar {
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-line);
+}
+
+.navbar-inner {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+  flex-wrap: wrap;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+}
+
+.navbar-name {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--color-indigo);
+}
+
+.logo-shape {
+  fill: var(--color-indigo);
+}
+
+.logo-initials {
+  fill: var(--color-marigold);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 38px;
+}
+
+.navbar-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.5rem;
+}
+
+.navbar-links a {
+  display: inline-block;
+  padding: 0.4rem 0;
+  font-weight: 500;
+  text-decoration: none;
+  border-bottom: 3px solid transparent;
+}
+
+.navbar-links a:hover {
+  border-bottom-color: var(--color-line);
+}
+
+/* "active" is added by NavLink to the current page */
+.navbar-links a.active {
+  border-bottom-color: var(--color-marigold);
+}
+
+/* ---------- 5. Buttons ---------- */
+.button {
+  display: inline-block;
+  padding: 0.75rem 1.4rem;
+  border: 2px solid var(--color-indigo);
+  border-radius: var(--radius);
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.button-primary {
+  background: var(--color-indigo);
+  color: var(--color-surface);
+}
+
+.button-primary:hover {
+  background: var(--color-indigo-soft);
+  border-color: var(--color-indigo-soft);
+}
+
+.button-secondary {
+  background: transparent;
+  color: var(--color-indigo);
+}
+
+.button-secondary:hover {
+  background: var(--color-surface);
+}
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* ---------- 6. Home ---------- */
+.notice {
+  margin-bottom: 2rem;
+  padding: 0.9rem 1.2rem;
+  background: var(--color-surface);
+  border-left: 5px solid var(--color-marigold);
+  border-radius: var(--radius);
+  font-weight: 500;
+}
+
+.home-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  gap: 3rem;
+  align-items: center;
+  padding-top: 1.5rem;
+}
+
+.home-greeting {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-indigo-soft);
+  margin-bottom: 0.75rem;
+}
+
+.home-title {
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+}
+
+.home-mission {
+  max-width: 38rem;
+  font-size: 1.15rem;
+  margin-bottom: 2rem;
+}
+
+.home-shape polygon {
+  fill: var(--color-marigold);
+}
+
+.home-shape text {
+  fill: var(--color-indigo);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 44px;
+}
+
+/* ---------- 7. Inner pages ---------- */
+.page-title {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+}
+
+.page-intro {
+  font-size: 1.15rem;
+  color: var(--color-indigo-soft);
+  margin-bottom: 2.5rem;
+}
+
+.page h2 {
+  font-size: 1.35rem;
+  margin-bottom: 0.5rem;
+}
+
+/* About */
+.about-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 18rem) minmax(0, 1fr);
+  gap: 2.5rem;
+  align-items: start;
+  margin-top: 2rem;
+}
+
+.about-photo {
+  width: 100%;
+  border-radius: var(--radius);
+  border-bottom: 8px solid var(--color-marigold);
+}
+
+.about-text {
+  max-width: 38rem;
+}
+
+.about-text h2 {
+  font-size: 1.7rem;
+  margin-bottom: 1rem;
+}
+
+.about-text p {
+  margin-bottom: 1rem;
+}
+
+.about-text .button {
+  margin-top: 0.5rem;
+}
+
+/* Projects */
+.project-list {
+  display: grid;
+  gap: 2rem;
+}
+
+.project {
+  display: grid;
+  grid-template-columns: minmax(0, 22rem) minmax(0, 1fr);
+  gap: 2rem;
+  align-items: center;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.project:last-child {
+  border-bottom: none;
+}
+
+.project-image {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: left top; /* keeps the start of each screenshot visible */
+  border-radius: var(--radius);
+}
+
+.project-details {
+  font-weight: 600;
+  color: var(--color-indigo-soft);
+}
+
+.project-body p {
+  margin-top: 0.6rem;
+  max-width: 36rem;
+}
+
+/* Education timeline */
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 1.75rem;
+  border-left: 3px solid var(--color-line);
+}
+
+.timeline-item {
+  position: relative;
+  padding-bottom: 2.25rem;
+}
+
+/* Marker of each timeline entry */
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: calc(-1.75rem - 9.5px);
+  top: 0.35rem;
+  width: 16px;
+  height: 16px;
+  background: var(--color-marigold);
+  border: 3px solid var(--color-indigo);
+  border-radius: 50%;
+}
+
+.timeline-dates {
+  font-weight: 600;
+  color: var(--color-indigo-soft);
+  margin-bottom: 0.25rem;
+}
+
+.timeline-details {
+  margin-top: 0.5rem;
+  max-width: 40rem;
+}
+
+/* Services */
+.service-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+.service-image {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: var(--radius);
+  margin-bottom: 1rem;
+}
+
+/* Contact */
+.contact-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 20rem) minmax(0, 1fr);
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.contact-panel {
+  padding: 1.75rem;
+  background: var(--color-indigo);
+  color: var(--color-paper);
+  border-radius: var(--radius);
+}
+
+.contact-panel h2,
+.contact-panel a {
+  color: var(--color-paper);
+}
+
+.contact-panel dl {
+  margin: 1rem 0 0;
+}
+
+.contact-panel dt {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-marigold);
+}
+
+.contact-panel dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.contact-form {
+  display: grid;
+  gap: 1.25rem;
+  justify-items: start;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+  width: 100%;
+}
+
+.contact-form label {
+  display: grid;
+  gap: 0.35rem;
+  width: 100%;
+  font-weight: 600;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.7rem 0.8rem;
+  border: 1.5px solid var(--color-line);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font: inherit;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--color-indigo);
+}
+
+/* ---------- 8. Footer ---------- */
+.footer {
+  padding: 1.5rem;
+  border-top: 1px solid var(--color-line);
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--color-indigo-soft);
+}
+
+/* ---------- 9. Small screens (phones) ---------- */
+@media (max-width: 720px) {
+  .site-main {
+    padding-top: 2rem;
+  }
+
+  .home-grid,
+  .about-grid,
+  .project,
+  .contact-grid,
+  .service-list,
+  .form-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .home-shape {
+    max-width: 11rem;
+  }
+
+  .about-photo {
+    max-width: 16rem;
+  }
 }
