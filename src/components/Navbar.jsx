@@ -18,7 +18,6 @@ function Navbar() {
       <div className="navbar-inner">
         <Link to="/" className="navbar-brand" aria-label="Kristy Riano, home">
           <Logo />
-          <span className="navbar-name">Kristy Riano</span>
         </Link>
 
         <nav aria-label="Main navigation">

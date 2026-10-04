@@ -1,5 +1,6 @@
-// App: defines the shared layout (navbar + footer) and the route of each page
+// App: defines the shared layout (announcement bar, navbar and footer) and the route of each page
 import { Routes, Route } from 'react-router-dom'
+import AnnouncementBar from './components/AnnouncementBar.jsx'
 import Navbar from './components/Navbar.jsx'
 import Footer from './components/Footer.jsx'
 import Home from './pages/Home.jsx'
@@ -12,6 +13,7 @@ import Contact from './pages/Contact.jsx'
 function App() {
   return (
     <div className="site">
+      <AnnouncementBar />
       <Navbar />
 
       <main className="site-main">

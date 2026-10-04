@@ -6,7 +6,8 @@
 
 /* ---------- 1. Design tokens (colors, fonts, sizes) ---------- */
 :root {
-  --color-black: #000000;
+  --color-navy: #0b1f3f;
+  --color-navy-deep: #071428;
   --color-white: #ffffff;
   --color-orange: #f26a21;
   --color-orange-light: #ff8a47;
@@ -30,7 +31,7 @@
 body {
   margin: 0;
   background: var(--color-white);
-  color: var(--color-black);
+  color: var(--color-navy);
   font-family: var(--font-main);
   font-size: 1.0625rem;
   line-height: 1.6;
@@ -47,7 +48,7 @@ p {
 }
 
 a {
-  color: var(--color-black);
+  color: var(--color-navy);
 }
 
 img {
@@ -80,6 +81,31 @@ img {
 }
 
 /* ---------- 4. Navbar ---------- */
+/* Orange strip above the navbar */
+.announcement {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem 1.25rem;
+  padding: 0.6rem 1.5rem;
+  background: var(--color-orange);
+  color: var(--color-navy);
+  font-weight: 700;
+}
+
+.announcement-button {
+  padding: 0.35rem 1rem;
+  background: var(--color-navy);
+  color: var(--color-white);
+  border-radius: var(--radius);
+  text-decoration: none;
+}
+
+.announcement-button:hover {
+  background: var(--color-navy-deep);
+}
+
 .navbar {
   background: var(--color-white);
   border-bottom: 1px solid var(--color-gray-line);
@@ -103,45 +129,9 @@ img {
   text-decoration: none;
 }
 
-.navbar-name {
-  font-weight: 700;
-  font-size: 1.2rem;
-}
-
-/* Logo: black chip with white initials */
-.logo-body,
-.logo-dot {
-  fill: var(--color-black);
-}
-
-.logo-pin {
-  fill: none;
-  stroke: var(--color-black);
-  stroke-width: 4;
-}
-
-.logo-initials {
-  fill: var(--color-white);
-  font-family: var(--font-main);
-  font-weight: 700;
-  font-size: 28px;
-}
-
-/* Inverted logo for dark backgrounds: white chip with orange connectors */
-.logo-inverted .logo-body {
-  fill: var(--color-white);
-}
-
-.logo-inverted .logo-initials {
-  fill: var(--color-black);
-}
-
-.logo-inverted .logo-dot {
-  fill: var(--color-orange);
-}
-
-.logo-inverted .logo-pin {
-  stroke: var(--color-orange);
+.logo {
+  height: 3.25rem;
+  width: auto;
 }
 
 .navbar-links {
@@ -161,12 +151,12 @@ img {
 }
 
 .navbar-links a:hover {
-  color: var(--color-black);
+  color: var(--color-navy);
 }
 
 /* "active" is added by NavLink to the current page: shown in bold, with no line */
 .navbar-links a.active {
-  color: var(--color-black);
+  color: var(--color-navy);
   font-weight: 700;
 }
 
@@ -184,7 +174,7 @@ img {
 
 .button-primary {
   background: var(--color-orange);
-  color: var(--color-black);
+  color: var(--color-navy);
 }
 
 .button-primary:hover {
@@ -201,7 +191,19 @@ img {
 
 .button-light:hover {
   background: var(--color-white);
-  color: var(--color-black);
+  color: var(--color-navy);
+}
+
+/* Outlined button for light backgrounds */
+.button-dark {
+  background: transparent;
+  border-color: var(--color-navy);
+  color: var(--color-navy);
+}
+
+.button-dark:hover {
+  background: var(--color-navy);
+  color: var(--color-white);
 }
 
 .button-row {
@@ -211,18 +213,17 @@ img {
 }
 
 /* ---------- 6. Home ---------- */
-/* Black band with a faint grid, like a circuit board */
-.home {
-  min-height: 100%;
-  background-color: var(--color-black);
+/* Hero: dark blue band with a faint grid, like a circuit board */
+.hero {
+  background-color: var(--color-navy);
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
   background-size: 3rem 3rem;
   color: var(--color-white);
 }
 
-.home-inner {
+.hero-inner {
   max-width: var(--content-width);
   margin: 0 auto;
   padding: 4rem 1.5rem;
@@ -232,43 +233,45 @@ img {
   margin-bottom: 2.5rem;
   padding: 0.9rem 1.2rem;
   background: var(--color-white);
-  color: var(--color-black);
+  color: var(--color-navy);
   border-left: 6px solid var(--color-orange);
   border-radius: var(--radius);
   font-weight: 700;
 }
 
-.home-grid {
+.hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
-  gap: 3rem;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  gap: 4rem;
   align-items: center;
 }
 
-.home-greeting {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: var(--color-orange);
-  margin-bottom: 1rem;
-}
-
-.home-title {
-  font-size: clamp(2.2rem, 5vw, 3.7rem);
-  letter-spacing: -0.02em;
+.hero-title {
+  font-size: clamp(2.6rem, 6.2vw, 4.6rem);
+  letter-spacing: -0.03em;
+  line-height: 1.08;
   margin-bottom: 1.5rem;
 }
 
-.home-mission {
-  max-width: 38rem;
-  font-size: 1.15rem;
+/* Orange band behind the lower half of the highlighted words */
+.highlight {
+  white-space: nowrap; /* keeps the highlighted words on one line */
+  background: linear-gradient(transparent 62%, var(--color-orange) 62%);
+}
+
+.hero-text {
+  max-width: 36rem;
+  font-size: 1.3rem;
   margin-bottom: 2rem;
 }
 
-.home-logo {
+/* Portrait with an orange block offset behind it */
+.hero-portrait {
   width: 100%;
-  max-width: 17rem;
-  height: auto;
+  max-width: 20rem;
   justify-self: center;
+  border-radius: var(--radius);
+  box-shadow: 1rem 1rem 0 var(--color-orange);
 }
 
 /* Key numbers under the welcome message */
@@ -293,6 +296,40 @@ img {
 .highlight-label {
   display: block;
   margin-top: 0.3rem;
+}
+
+/* Services overview under the hero */
+.home-services {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+}
+
+.home-services-title {
+  max-width: 44rem;
+  font-size: clamp(1.9rem, 4vw, 2.8rem);
+  letter-spacing: -0.02em;
+  margin-bottom: 2.5rem;
+}
+
+.home-service-list {
+  list-style: none;
+  margin: 0 0 2.5rem;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+.home-service-list li {
+  padding-top: 1.25rem;
+  border-top: 5px solid var(--color-navy);
+}
+
+.home-service-list h3 {
+  margin: 0 0 0.6rem;
+  font-size: 1.3rem;
+  line-height: 1.2;
 }
 
 /* ---------- 7. Inner pages ---------- */
@@ -398,7 +435,7 @@ img {
   list-style: none;
   margin: 0;
   padding: 0 0 0 1.75rem;
-  border-left: 3px solid var(--color-black);
+  border-left: 3px solid var(--color-navy);
 }
 
 .timeline-item {
@@ -415,7 +452,7 @@ img {
   width: 16px;
   height: 16px;
   background: var(--color-orange);
-  border: 3px solid var(--color-black);
+  border: 3px solid var(--color-navy);
   border-radius: 50%;
 }
 
@@ -458,7 +495,7 @@ img {
 
 .contact-panel {
   padding: 1.75rem;
-  background: var(--color-black);
+  background: var(--color-navy);
   color: var(--color-white);
   border-radius: var(--radius);
 }
@@ -510,19 +547,19 @@ img {
   border: 1.5px solid var(--color-gray-line);
   border-radius: var(--radius);
   background: var(--color-white);
-  color: var(--color-black);
+  color: var(--color-navy);
   font: inherit;
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
-  border-color: var(--color-black);
+  border-color: var(--color-navy);
 }
 
 /* ---------- 8. Footer ---------- */
 .footer {
   padding: 1.5rem;
-  background: var(--color-black);
+  background: var(--color-navy-deep);
   border-top: 1px solid rgba(255, 255, 255, 0.25);
   text-align: center;
   font-size: 0.95rem;
@@ -531,11 +568,17 @@ img {
 
 /* ---------- 9. Small screens (phones) ---------- */
 @media (max-width: 720px) {
-  .home-inner {
+  .hero-inner,
+  .home-services {
     padding: 2.5rem 1.5rem;
   }
 
-  .home-grid,
+  .logo {
+    height: 2.6rem;
+  }
+
+  .hero-grid,
+  .home-service-list,
   .about-grid,
   .project,
   .contact-grid,
@@ -545,8 +588,8 @@ img {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .home-logo {
-    max-width: 9rem;
+  .hero-portrait {
+    max-width: 14rem;
     justify-self: start;
   }
 
