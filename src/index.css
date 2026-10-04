@@ -6,7 +6,7 @@
 
 /* ---------- 1. Design tokens (colors, fonts, sizes) ---------- */
 :root {
-  --color-navy: #0b1f3f;
+  --color-navy: #050063; /* same blue as the logo */
   --color-charcoal: #25262b;
   --color-charcoal-deep: #1b1c20;
   --color-white: #ffffff;
@@ -214,16 +214,18 @@ img {
 }
 
 /* ---------- 6. Home ---------- */
-/* Hero: dark gray band */
+/* Hero: background photo with a dark blue layer on the left so the text stays readable */
 .hero {
-  background: var(--color-charcoal);
+  background:
+    linear-gradient(90deg, rgba(4, 8, 40, 0.92) 0%, rgba(4, 8, 40, 0.7) 42%, rgba(4, 8, 40, 0) 75%),
+    url('./assets/hero-background.jpg') right center / cover no-repeat;
   color: var(--color-white);
 }
 
 .hero-inner {
   max-width: var(--content-width);
   margin: 0 auto;
-  padding: 4rem 1.5rem;
+  padding: 6rem 1.5rem;
 }
 
 .notice {
@@ -236,11 +238,8 @@ img {
   font-weight: 700;
 }
 
-.hero-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
-  gap: 3rem;
-  align-items: center;
+.hero-content {
+  max-width: 38rem;
 }
 
 .hero-title {
@@ -257,23 +256,21 @@ img {
 }
 
 .hero-text {
-  max-width: 36rem;
   font-size: 1.3rem;
   margin-bottom: 2rem;
 }
 
-.hero-image {
-  width: 100%;
-  max-width: 28rem;
-  justify-self: center;
+/* Key numbers under the hero */
+.highlights {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem;
 }
 
-/* Key numbers under the welcome message */
 .highlight-list {
   list-style: none;
-  margin: 4rem 0 0;
-  padding: 2rem 0 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.25);
+  margin: 0;
+  padding: 0;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.5rem;
@@ -292,8 +289,12 @@ img {
   margin-top: 0.3rem;
 }
 
-/* Services overview under the hero */
+/* Services overview under the hero, on a light gray band */
 .home-services {
+  background: var(--color-gray-surface);
+}
+
+.home-services-inner {
   max-width: var(--content-width);
   margin: 0 auto;
   padding: 4rem 1.5rem;
@@ -562,8 +563,18 @@ img {
 
 /* ---------- 9. Small screens (phones) ---------- */
 @media (max-width: 720px) {
-  .hero-inner,
-  .home-services {
+  .hero-inner {
+    padding: 3.5rem 1.5rem;
+  }
+
+  /* On phones the dark layer covers the whole photo */
+  .hero {
+    background:
+      linear-gradient(rgba(4, 8, 40, 0.78), rgba(4, 8, 40, 0.78)),
+      url('./assets/hero-background.jpg') 80% center / cover no-repeat;
+  }
+
+  .home-services-inner {
     padding: 2.5rem 1.5rem;
   }
 
@@ -571,7 +582,6 @@ img {
     height: 2.6rem;
   }
 
-  .hero-grid,
   .home-service-list,
   .about-grid,
   .project,
@@ -580,11 +590,6 @@ img {
   .form-row,
   .highlight-list {
     grid-template-columns: minmax(0, 1fr);
-  }
-
-  .hero-image {
-    max-width: 20rem;
-    justify-self: start;
   }
 
   .about-photo {

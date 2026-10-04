@@ -1,11 +1,11 @@
 // Projects shown on the Projects page: client websites first, then software projects.
-// To use a real screenshot, save it in src/assets and change the import below.
+// The first two images are screenshots of the client websites; the rest are concept images.
 import reposeWellnessImage from '../assets/project-repose.jpg'
 import msolutionsImage from '../assets/project-msolutions.jpg'
-import inventraImage from '../assets/project-1.svg'
-import salesSystemImage from '../assets/project-2.svg'
-import deliveryAppImage from '../assets/project-3.svg'
-import cancerDetectionImage from '../assets/project-4.svg'
+import inventraImage from '../assets/project-inventra.jpg'
+import salesSystemImage from '../assets/project-sales-system.jpg'
+import deliveryAppImage from '../assets/project-delivery-app.jpg'
+import cancerDetectionImage from '../assets/project-cancer-detection.jpg'
 
 const projects = [
   {

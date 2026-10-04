@@ -10,7 +10,7 @@ function Projects() {
       <div className="project-list">
         {projects.map((project) => (
           <article className="project" key={project.id}>
-            <img className="project-image" src={project.image} alt={`Cover of ${project.title}`} />
+            <img className="project-image" src={project.image} alt={`Image of the project ${project.title}`} />
             <div className="project-body">
               <h2>{project.title}</h2>
               <p className="project-details">

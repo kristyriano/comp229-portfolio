@@ -1,9 +1,8 @@
 // Home page: welcome message, key numbers, services overview and links to other pages
 import { Link, useLocation } from 'react-router-dom'
 import services from '../data/services.js'
-import heroIllustration from '../assets/hero-illustration.svg'
 
-// Key results shown under the welcome message
+// Key results shown under the hero
 const careerHighlights = [
   { id: 1, figure: '50+', label: 'websites built for clients' },
   { id: 2, figure: '15K+', label: 'followers learning tech with me' },
@@ -17,7 +16,7 @@ function Home() {
 
   return (
     <>
-      {/* Hero: first block of the page, on a dark gray background */}
+      {/* Hero: first block of the page, with a background photo */}
       <section className="hero">
         <div className="hero-inner">
           {/* Confirmation shown only after the contact form was submitted */}
@@ -27,47 +26,43 @@ function Home() {
             </p>
           )}
 
-          <div className="hero-grid">
-            <div>
-              <h1 className="hero-title">
-                Everything you dream of <span className="highlight">is possible.</span>
-              </h1>
+          <div className="hero-content">
+            <h1 className="hero-title">
+              Everything you dream of <span className="highlight">is possible.</span>
+            </h1>
 
-              <p className="hero-text">
-                Welcome to Kristy Riano. Websites, apps, digital marketing and AI solutions
-                that help your business get found, sell more and grow.
-              </p>
+            <p className="hero-text">
+              Welcome to Kristy Riano. Websites, apps, digital marketing and AI solutions
+              that help your business get found, sell more and grow.
+            </p>
 
-              <div className="button-row">
-                <Link to="/contact" className="button button-primary">
-                  Start your project
-                </Link>
-                <Link to="/about" className="button button-light">
-                  Meet Kristy
-                </Link>
-              </div>
+            <div className="button-row">
+              <Link to="/contact" className="button button-primary">
+                Start your project
+              </Link>
+              <Link to="/about" className="button button-light">
+                Meet Kristy
+              </Link>
             </div>
-
-            <img
-              className="hero-image"
-              src={heroIllustration}
-              alt="Website with a growth chart, a phone with an AI chat and a search result in first position"
-            />
           </div>
-
-          <ul className="highlight-list">
-            {careerHighlights.map((careerHighlight) => (
-              <li key={careerHighlight.id}>
-                <span className="highlight-figure">{careerHighlight.figure}</span>
-                <span className="highlight-label">{careerHighlight.label}</span>
-              </li>
-            ))}
-          </ul>
         </div>
+      </section>
+
+      {/* Key numbers under the hero */}
+      <section className="highlights">
+        <ul className="highlight-list">
+          {careerHighlights.map((careerHighlight) => (
+            <li key={careerHighlight.id}>
+              <span className="highlight-figure">{careerHighlight.figure}</span>
+              <span className="highlight-label">{careerHighlight.label}</span>
+            </li>
+          ))}
+        </ul>
       </section>
 
       {/* Services overview: the same data used by the Services page */}
       <section className="home-services">
+        <div className="home-services-inner">
         <h2 className="home-services-title">
           Everything your business needs to <span className="highlight">grow online.</span>
         </h2>
@@ -88,6 +83,7 @@ function Home() {
           <Link to="/projects" className="button button-dark">
             See my work
           </Link>
+        </div>
         </div>
       </section>
     </>
