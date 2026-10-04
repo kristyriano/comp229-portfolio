@@ -12,6 +12,7 @@
   --color-white: #ffffff;
   --color-orange: #f26a21;
   --color-orange-light: #ff8a47;
+  --color-orange-dark: #d4500f; /* readable orange for text on white */
   --color-gray-text: #555555;
   --color-gray-line: #dddddd;
   --color-gray-surface: #f4f4f4;
@@ -59,7 +60,7 @@ img {
 
 /* Visible outline for people who navigate with the keyboard */
 :focus-visible {
-  outline: 3px solid var(--color-orange);
+  outline: 2px solid var(--color-navy);
   outline-offset: 3px;
 }
 
@@ -282,18 +283,23 @@ img {
   padding: 0;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
+/* Each service is a white card of the same height */
 .home-service-list li {
-  padding-top: 1.25rem;
-  border-top: 5px solid var(--color-navy);
+  padding: 1.75rem;
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-line);
+  border-radius: var(--radius);
 }
 
 .home-service-list h3 {
-  margin: 0 0 0.6rem;
+  min-height: 2.4em; /* reserves two lines so the descriptions start aligned */
+  margin: 0 0 0.75rem;
   font-size: 1.3rem;
   line-height: 1.2;
+  color: var(--color-orange-dark);
 }
 
 /* ---------- 7. Inner pages ---------- */
@@ -301,16 +307,6 @@ img {
   font-size: clamp(2rem, 4vw, 2.8rem);
   letter-spacing: -0.02em;
   margin-bottom: 0.5rem;
-}
-
-/* Short orange bar under every page title */
-.page-title::after {
-  content: '';
-  display: block;
-  width: 4rem;
-  height: 5px;
-  margin-top: 0.9rem;
-  background: var(--color-orange);
 }
 
 .page-intro {
