@@ -7,7 +7,8 @@
 /* ---------- 1. Design tokens (colors, fonts, sizes) ---------- */
 :root {
   --color-navy: #0b1f3f;
-  --color-navy-deep: #071428;
+  --color-charcoal: #25262b;
+  --color-charcoal-deep: #1b1c20;
   --color-white: #ffffff;
   --color-orange: #f26a21;
   --color-orange-light: #ff8a47;
@@ -96,14 +97,14 @@ img {
 
 .announcement-button {
   padding: 0.35rem 1rem;
-  background: var(--color-navy);
+  background: var(--color-charcoal);
   color: var(--color-white);
   border-radius: var(--radius);
   text-decoration: none;
 }
 
 .announcement-button:hover {
-  background: var(--color-navy-deep);
+  background: var(--color-charcoal-deep);
 }
 
 .navbar {
@@ -213,13 +214,9 @@ img {
 }
 
 /* ---------- 6. Home ---------- */
-/* Hero: dark blue band with a faint grid, like a circuit board */
+/* Hero: dark gray band */
 .hero {
-  background-color: var(--color-navy);
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-  background-size: 3rem 3rem;
+  background: var(--color-charcoal);
   color: var(--color-white);
 }
 
@@ -241,8 +238,8 @@ img {
 
 .hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
-  gap: 4rem;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  gap: 3rem;
   align-items: center;
 }
 
@@ -265,13 +262,10 @@ img {
   margin-bottom: 2rem;
 }
 
-/* Portrait with an orange block offset behind it */
-.hero-portrait {
+.hero-image {
   width: 100%;
-  max-width: 20rem;
+  max-width: 28rem;
   justify-self: center;
-  border-radius: var(--radius);
-  box-shadow: 1rem 1rem 0 var(--color-orange);
 }
 
 /* Key numbers under the welcome message */
@@ -495,7 +489,7 @@ img {
 
 .contact-panel {
   padding: 1.75rem;
-  background: var(--color-navy);
+  background: var(--color-charcoal);
   color: var(--color-white);
   border-radius: var(--radius);
 }
@@ -559,7 +553,7 @@ img {
 /* ---------- 8. Footer ---------- */
 .footer {
   padding: 1.5rem;
-  background: var(--color-navy-deep);
+  background: var(--color-charcoal-deep);
   border-top: 1px solid rgba(255, 255, 255, 0.25);
   text-align: center;
   font-size: 0.95rem;
@@ -588,8 +582,8 @@ img {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .hero-portrait {
-    max-width: 14rem;
+  .hero-image {
+    max-width: 20rem;
     justify-self: start;
   }
 

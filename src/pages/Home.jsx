@@ -1,7 +1,7 @@
 // Home page: welcome message, key numbers, services overview and links to other pages
 import { Link, useLocation } from 'react-router-dom'
 import services from '../data/services.js'
-import heroPortrait from '../assets/hero-portrait.jpg'
+import heroIllustration from '../assets/hero-illustration.svg'
 
 // Key results shown under the welcome message
 const careerHighlights = [
@@ -17,7 +17,7 @@ function Home() {
 
   return (
     <>
-      {/* Hero: first block of the page, on a dark blue background */}
+      {/* Hero: first block of the page, on a dark gray background */}
       <section className="hero">
         <div className="hero-inner">
           {/* Confirmation shown only after the contact form was submitted */}
@@ -48,7 +48,11 @@ function Home() {
               </div>
             </div>
 
-            <img className="hero-portrait" src={heroPortrait} alt="Kristy Riano" />
+            <img
+              className="hero-image"
+              src={heroIllustration}
+              alt="Website with a growth chart, a phone with an AI chat and a search result in first position"
+            />
           </div>
 
           <ul className="highlight-list">
