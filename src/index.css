@@ -6,19 +6,18 @@
 
 /* ---------- 1. Design tokens (colors, fonts, sizes) ---------- */
 :root {
-  --color-indigo: #1f2a5c;
-  --color-indigo-soft: #46528a;
-  --color-marigold: #f2b705;
-  --color-paper: #f7f8fc;
-  --color-surface: #ffffff;
-  --color-line: #d9deee;
-  --color-text: #232842;
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-orange: #f26a21;
+  --color-orange-light: #ff8a47;
+  --color-gray-text: #555555;
+  --color-gray-line: #dddddd;
+  --color-gray-surface: #f4f4f4;
 
-  --font-heading: Arial, Helvetica, sans-serif;
-  --font-body: Arial, Helvetica, sans-serif;
+  --font-main: Arial, Helvetica, sans-serif;
 
   --content-width: 68rem;
-  --radius: 0.5rem;
+  --radius: 0.4rem;
 }
 
 /* ---------- 2. Base ---------- */
@@ -30,17 +29,15 @@
 
 body {
   margin: 0;
-  background: var(--color-paper);
-  color: var(--color-text);
-  font-family: var(--font-body);
+  background: var(--color-white);
+  color: var(--color-black);
+  font-family: var(--font-main);
   font-size: 1.0625rem;
   line-height: 1.6;
 }
 
 h1,
 h2 {
-  font-family: var(--font-heading);
-  color: var(--color-indigo);
   line-height: 1.15;
   margin: 0;
 }
@@ -50,7 +47,7 @@ p {
 }
 
 a {
-  color: var(--color-indigo);
+  color: var(--color-black);
 }
 
 img {
@@ -60,7 +57,7 @@ img {
 
 /* Visible outline for people who navigate with the keyboard */
 :focus-visible {
-  outline: 3px solid var(--color-marigold);
+  outline: 3px solid var(--color-orange);
   outline-offset: 3px;
 }
 
@@ -73,7 +70,10 @@ img {
 
 .site-main {
   flex: 1;
-  width: 100%;
+}
+
+/* Inner pages share the same centered column */
+.page {
   max-width: var(--content-width);
   margin: 0 auto;
   padding: 3rem 1.5rem 4rem;
@@ -81,8 +81,8 @@ img {
 
 /* ---------- 4. Navbar ---------- */
 .navbar {
-  background: var(--color-surface);
-  border-bottom: 1px solid var(--color-line);
+  background: var(--color-white);
+  border-bottom: 1px solid var(--color-gray-line);
 }
 
 .navbar-inner {
@@ -104,29 +104,44 @@ img {
 }
 
 .navbar-name {
-  font-family: var(--font-heading);
   font-weight: 700;
   font-size: 1.2rem;
-  color: var(--color-indigo);
 }
 
 /* Logo: black chip with white initials */
 .logo-body,
 .logo-dot {
-  fill: #000000;
+  fill: var(--color-black);
 }
 
 .logo-pin {
   fill: none;
-  stroke: #000000;
+  stroke: var(--color-black);
   stroke-width: 4;
 }
 
 .logo-initials {
-  fill: #ffffff;
-  font-family: Arial, Helvetica, sans-serif;
+  fill: var(--color-white);
+  font-family: var(--font-main);
   font-weight: 700;
   font-size: 28px;
+}
+
+/* Inverted logo for dark backgrounds: white chip with orange connectors */
+.logo-inverted .logo-body {
+  fill: var(--color-white);
+}
+
+.logo-inverted .logo-initials {
+  fill: var(--color-black);
+}
+
+.logo-inverted .logo-dot {
+  fill: var(--color-orange);
+}
+
+.logo-inverted .logo-pin {
+  stroke: var(--color-orange);
 }
 
 .navbar-links {
@@ -141,49 +156,52 @@ img {
 .navbar-links a {
   display: inline-block;
   padding: 0.4rem 0;
-  font-weight: 500;
+  color: var(--color-gray-text);
   text-decoration: none;
 }
 
 .navbar-links a:hover {
-  color: #000000;
+  color: var(--color-black);
 }
 
 /* "active" is added by NavLink to the current page: shown in bold, with no line */
 .navbar-links a.active {
-  color: #000000;
+  color: var(--color-black);
   font-weight: 700;
 }
 
 /* ---------- 5. Buttons ---------- */
 .button {
   display: inline-block;
-  padding: 0.75rem 1.4rem;
-  border: 2px solid var(--color-indigo);
+  padding: 0.8rem 1.5rem;
+  border: 2px solid var(--color-orange);
   border-radius: var(--radius);
   font: inherit;
-  font-weight: 600;
+  font-weight: 700;
   text-decoration: none;
   cursor: pointer;
 }
 
 .button-primary {
-  background: var(--color-indigo);
-  color: var(--color-surface);
+  background: var(--color-orange);
+  color: var(--color-black);
 }
 
 .button-primary:hover {
-  background: var(--color-indigo-soft);
-  border-color: var(--color-indigo-soft);
+  background: var(--color-orange-light);
+  border-color: var(--color-orange-light);
 }
 
-.button-secondary {
+/* Outlined button for dark backgrounds */
+.button-light {
   background: transparent;
-  color: var(--color-indigo);
+  border-color: var(--color-white);
+  color: var(--color-white);
 }
 
-.button-secondary:hover {
-  background: var(--color-surface);
+.button-light:hover {
+  background: var(--color-white);
+  color: var(--color-black);
 }
 
 .button-row {
@@ -193,32 +211,49 @@ img {
 }
 
 /* ---------- 6. Home ---------- */
+/* Black band with a faint grid, like a circuit board */
+.home {
+  min-height: 100%;
+  background-color: var(--color-black);
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 3rem 3rem;
+  color: var(--color-white);
+}
+
+.home-inner {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+}
+
 .notice {
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
   padding: 0.9rem 1.2rem;
-  background: var(--color-surface);
-  border-left: 5px solid var(--color-marigold);
+  background: var(--color-white);
+  color: var(--color-black);
+  border-left: 6px solid var(--color-orange);
   border-radius: var(--radius);
-  font-weight: 500;
+  font-weight: 700;
 }
 
 .home-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
   gap: 3rem;
   align-items: center;
-  padding-top: 1.5rem;
 }
 
 .home-greeting {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--color-indigo-soft);
-  margin-bottom: 0.75rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-orange);
+  margin-bottom: 1rem;
 }
 
 .home-title {
-  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  font-size: clamp(2.2rem, 5vw, 3.7rem);
   letter-spacing: -0.02em;
   margin-bottom: 1.5rem;
 }
@@ -231,9 +266,33 @@ img {
 
 .home-logo {
   width: 100%;
-  max-width: 18rem;
+  max-width: 17rem;
   height: auto;
   justify-self: center;
+}
+
+/* Key numbers under the welcome message */
+.highlight-list {
+  list-style: none;
+  margin: 4rem 0 0;
+  padding: 2rem 0 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.highlight-figure {
+  display: block;
+  font-size: 2.6rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--color-orange);
+}
+
+.highlight-label {
+  display: block;
+  margin-top: 0.3rem;
 }
 
 /* ---------- 7. Inner pages ---------- */
@@ -243,10 +302,20 @@ img {
   margin-bottom: 0.5rem;
 }
 
+/* Short orange bar under every page title */
+.page-title::after {
+  content: '';
+  display: block;
+  width: 4rem;
+  height: 5px;
+  margin-top: 0.9rem;
+  background: var(--color-orange);
+}
+
 .page-intro {
   font-size: 1.15rem;
-  color: var(--color-indigo-soft);
-  margin-bottom: 2.5rem;
+  color: var(--color-gray-text);
+  margin: 1rem 0 2.5rem;
 }
 
 .page h2 {
@@ -260,13 +329,13 @@ img {
   grid-template-columns: minmax(0, 18rem) minmax(0, 1fr);
   gap: 2.5rem;
   align-items: start;
-  margin-top: 2rem;
+  margin-top: 2.5rem;
 }
 
 .about-photo {
   width: 100%;
   border-radius: var(--radius);
-  border-bottom: 8px solid var(--color-marigold);
+  border-bottom: 8px solid var(--color-orange);
 }
 
 .about-text {
@@ -298,7 +367,7 @@ img {
   gap: 2rem;
   align-items: center;
   padding-bottom: 2rem;
-  border-bottom: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-gray-line);
 }
 
 .project:last-child {
@@ -313,14 +382,15 @@ img {
   border-radius: var(--radius);
 }
 
-.project-details {
-  font-weight: 600;
-  color: var(--color-indigo-soft);
-}
-
 .project-body p {
   margin-top: 0.6rem;
   max-width: 36rem;
+}
+
+.project-body .project-details {
+  margin-top: 0;
+  font-weight: 700;
+  color: var(--color-gray-text);
 }
 
 /* Education timeline */
@@ -328,7 +398,7 @@ img {
   list-style: none;
   margin: 0;
   padding: 0 0 0 1.75rem;
-  border-left: 3px solid var(--color-line);
+  border-left: 3px solid var(--color-black);
 }
 
 .timeline-item {
@@ -344,14 +414,14 @@ img {
   top: 0.35rem;
   width: 16px;
   height: 16px;
-  background: var(--color-marigold);
-  border: 3px solid var(--color-indigo);
+  background: var(--color-orange);
+  border: 3px solid var(--color-black);
   border-radius: 50%;
 }
 
 .timeline-dates {
-  font-weight: 600;
-  color: var(--color-indigo-soft);
+  font-weight: 700;
+  color: var(--color-gray-text);
   margin-bottom: 0.25rem;
 }
 
@@ -388,14 +458,13 @@ img {
 
 .contact-panel {
   padding: 1.75rem;
-  background: var(--color-indigo);
-  color: var(--color-paper);
+  background: var(--color-black);
+  color: var(--color-white);
   border-radius: var(--radius);
 }
 
-.contact-panel h2,
 .contact-panel a {
-  color: var(--color-paper);
+  color: var(--color-white);
 }
 
 .contact-panel dl {
@@ -405,8 +474,8 @@ img {
 .contact-panel dt {
   margin-top: 1rem;
   font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--color-marigold);
+  font-weight: 700;
+  color: var(--color-orange);
 }
 
 .contact-panel dd {
@@ -431,38 +500,39 @@ img {
   display: grid;
   gap: 0.35rem;
   width: 100%;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .contact-form input,
 .contact-form textarea {
   width: 100%;
   padding: 0.7rem 0.8rem;
-  border: 1.5px solid var(--color-line);
+  border: 1.5px solid var(--color-gray-line);
   border-radius: var(--radius);
-  background: var(--color-surface);
-  color: var(--color-text);
+  background: var(--color-white);
+  color: var(--color-black);
   font: inherit;
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
-  border-color: var(--color-indigo);
+  border-color: var(--color-black);
 }
 
 /* ---------- 8. Footer ---------- */
 .footer {
   padding: 1.5rem;
-  border-top: 1px solid var(--color-line);
+  background: var(--color-black);
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
   text-align: center;
   font-size: 0.95rem;
-  color: var(--color-indigo-soft);
+  color: var(--color-white);
 }
 
 /* ---------- 9. Small screens (phones) ---------- */
 @media (max-width: 720px) {
-  .site-main {
-    padding-top: 2rem;
+  .home-inner {
+    padding: 2.5rem 1.5rem;
   }
 
   .home-grid,
@@ -470,12 +540,13 @@ img {
   .project,
   .contact-grid,
   .service-list,
-  .form-row {
+  .form-row,
+  .highlight-list {
     grid-template-columns: minmax(0, 1fr);
   }
 
   .home-logo {
-    max-width: 10rem;
+    max-width: 9rem;
     justify-self: start;
   }
 
