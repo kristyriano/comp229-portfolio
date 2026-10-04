@@ -1,5 +1,6 @@
 // Home page: welcome message, mission statement and links to the other pages
 import { Link, useLocation } from 'react-router-dom'
+import Logo from '../components/Logo.jsx'
 
 function Home() {
   // When the contact form redirects here, it sends the visitor's name in location.state
@@ -35,13 +36,8 @@ function Home() {
           </div>
         </div>
 
-        {/* Decorative hexagon that repeats the shape of the logo */}
-        <svg className="home-shape" viewBox="0 0 100 100" aria-hidden="true">
-          <polygon points="50,4 91,27 91,73 50,96 9,73 9,27" />
-          <text x="50" y="66" textAnchor="middle">
-            KR
-          </text>
-        </svg>
+        {/* Large version of the logo as the visual of the page */}
+        <Logo size={280} className="logo home-logo" />
       </div>
     </section>
   )

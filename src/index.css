@@ -14,8 +14,8 @@
   --color-line: #d9deee;
   --color-text: #232842;
 
-  --font-heading: 'Bricolage Grotesque', 'Trebuchet MS', sans-serif;
-  --font-body: 'Figtree', 'Segoe UI', Arial, sans-serif;
+  --font-heading: Arial, Helvetica, sans-serif;
+  --font-body: Arial, Helvetica, sans-serif;
 
   --content-width: 68rem;
   --radius: 0.5rem;
@@ -110,15 +110,23 @@ img {
   color: var(--color-indigo);
 }
 
-.logo-shape {
-  fill: var(--color-indigo);
+/* Logo: black chip with white initials */
+.logo-body,
+.logo-dot {
+  fill: #000000;
+}
+
+.logo-pin {
+  fill: none;
+  stroke: #000000;
+  stroke-width: 4;
 }
 
 .logo-initials {
-  fill: var(--color-marigold);
-  font-family: var(--font-heading);
+  fill: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
   font-weight: 700;
-  font-size: 38px;
+  font-size: 28px;
 }
 
 .navbar-links {
@@ -135,16 +143,16 @@ img {
   padding: 0.4rem 0;
   font-weight: 500;
   text-decoration: none;
-  border-bottom: 3px solid transparent;
 }
 
 .navbar-links a:hover {
-  border-bottom-color: var(--color-line);
+  color: #000000;
 }
 
-/* "active" is added by NavLink to the current page */
+/* "active" is added by NavLink to the current page: shown in bold, with no line */
 .navbar-links a.active {
-  border-bottom-color: var(--color-marigold);
+  color: #000000;
+  font-weight: 700;
 }
 
 /* ---------- 5. Buttons ---------- */
@@ -221,15 +229,11 @@ img {
   margin-bottom: 2rem;
 }
 
-.home-shape polygon {
-  fill: var(--color-marigold);
-}
-
-.home-shape text {
-  fill: var(--color-indigo);
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 44px;
+.home-logo {
+  width: 100%;
+  max-width: 18rem;
+  height: auto;
+  justify-self: center;
 }
 
 /* ---------- 7. Inner pages ---------- */
@@ -470,8 +474,9 @@ img {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .home-shape {
-    max-width: 11rem;
+  .home-logo {
+    max-width: 10rem;
+    justify-self: start;
   }
 
   .about-photo {
