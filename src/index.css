@@ -445,6 +445,10 @@ img {
   margin-bottom: 1rem;
 }
 
+.service-actions {
+  margin-top: 2.5rem;
+}
+
 /* Contact */
 .contact-grid {
   display: grid;

@@ -1,4 +1,5 @@
 // Services page: the services offered, each with an image and a description
+import { Link } from 'react-router-dom'
 import services from '../data/services.js'
 
 function Services() {
@@ -19,6 +20,13 @@ function Services() {
           </li>
         ))}
       </ul>
+
+      {/* Call to action that takes the visitor to the contact form */}
+      <div className="button-row service-actions">
+        <Link to="/contact" className="button button-primary">
+          Let's talk
+        </Link>
+      </div>
     </section>
   )
 }

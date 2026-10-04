@@ -75,7 +75,10 @@ function Home() {
           </ul>
 
           <div className="button-row">
-            <Link to="/services" className="button button-primary">
+            <Link to="/contact" className="button button-primary">
+              Let's talk
+            </Link>
+            <Link to="/services" className="button button-dark">
               Explore my services
             </Link>
             <Link to="/projects" className="button button-dark">
